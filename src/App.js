@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Card from "./components/Card";
+import Sound from "react-sound";
 
 const cardsImages = [
   { src: "/img/scroll-1.png", matched: false },
@@ -8,7 +9,9 @@ const cardsImages = [
   { src: "/img/potion-1.png", matched: false },
   { src: "/img/ring-1.png", matched: false },
   { src: "/img/shield-1.png", matched: false },
-  { src: "/img/sword-1.png", matched: false },
+  { src: "/img/grizzy-1.jpg", matched: false },
+  { src: "/img/ghost-1.gif", matched: false },
+  { src: "/img/cat-1.gif", matched: false },
 ];
 
 function App() {
@@ -18,6 +21,7 @@ function App() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [matched, setMatched] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
@@ -70,8 +74,18 @@ function App() {
 
   return (
     <div className="App">
+      <Sound
+        url="/img/bg-music.mp3"
+        playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
+        loop={true}
+      />
       <h1>Magic Game</h1>
-      <button onClick={shuffleCards}>New Game</button>
+      <button style={{ marginRight: "50px" }} onClick={shuffleCards}>
+        New Game
+      </button>
+      <button onClick={() => setIsPlaying(!isPlaying)}>
+        {isPlaying ? "Stop Music" : "Play Music"}
+      </button>
 
       <div className="card-grid">
         {cards.map((card) => (

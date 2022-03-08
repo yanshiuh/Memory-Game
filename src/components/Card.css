@@ -1,5 +1,11 @@
 .card {
   position: relative;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: scale(1.1);
 }
 
 .card img {

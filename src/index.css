@@ -5,6 +5,9 @@ body {
   margin: 0;
   font-size: 1.5em;
   text-align: center;
-  background: #1b1523;
   color: #fff;
+  /* background: #1b1523; */
+  background-image: url("../public/img/bg.gif");
+  background-size: cover;
+  background-position: center;
 }
